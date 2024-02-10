@@ -1,3 +1,8 @@
+<script lang="ts">
+	import ThemeSettings from "./theme/ThemeSettings.svelte";
+	import { themeSettingsStore } from "./theme/themeSettingsStore";
+</script>
+
 <div class="container mx-auto">
 	<footer class="footer p-10">
 		<aside>
@@ -41,4 +46,10 @@
 			<a class="link link-hover">Cookie policy</a>
 		</nav>
 	</footer>
+	<ThemeSettings
+		theme={$themeSettingsStore.theme}
+		setTheme={(selectedTheme) => {
+			$themeSettingsStore.theme = selectedTheme;
+		}}
+	/>
 </div>
