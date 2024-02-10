@@ -2,10 +2,11 @@
 	import "../app.css";
 	import Links from "ui/c/navbar/Links.svelte";
 	import Footer from "ui/c/Footer.svelte";
+	import { themeSettingsStore } from "ui/c/theme/themeSettingsStore";
 </script>
 
 <!-- <div class="drawer" data-theme={$userStore?$userStore.username:''}> -->
-<div class="drawer">
+<div class="drawer" data-theme={$themeSettingsStore.theme}>
 	<input id="navigation-drawer" type="checkbox" class="drawer-toggle" />
 	<div class="drawer-content flex flex-col">
 		<!-- Navbar -->
