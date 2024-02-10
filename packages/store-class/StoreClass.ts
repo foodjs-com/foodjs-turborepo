@@ -23,7 +23,6 @@ export class StoreClass<T>
     }
 
     set(value: T): void {
-        console.log('store class set', value);
         if (safe_not_equal(this as unknown as T, value)) {
             Object.assign(this, value);
             this.reRenderer();
@@ -31,12 +30,10 @@ export class StoreClass<T>
     }
 
     update(fn: (value: T) => T): void {
-        console.log('store class update');
         this.set(fn(this as unknown as T));
     }
 
     reRenderer(): void {
-        console.log('store class reRenderer');
         // this._makePropertiesObservable();
         this._subscribers.forEach(subscriber => subscriber(this as unknown as T));
     }
