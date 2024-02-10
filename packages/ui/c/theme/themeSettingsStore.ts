@@ -16,11 +16,12 @@ export class ThemeSettingsStore
         super();
         this.theme = Theme.Default;
         if (BROWSER) {
-            getKeyVal(KEY).then((theme) => {
+            (async () => {
+                const theme = await getKeyVal(KEY);
                 this.theme = theme as Theme || Theme.Default;
-                console.log('theme', this.theme);
+                // console.log('theme', this.theme);
                 this.reRenderer();
-            });
+            })();
             this.subscribe((store) => {
                 setKeyVal(KEY, store.theme);
             });
