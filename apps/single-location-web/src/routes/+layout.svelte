@@ -11,7 +11,7 @@
 	<div class="drawer-content flex flex-col">
 		<!-- Navbar -->
 		<div class="bg-base-300">
-			<div class="container mx-auto navbar">
+			<div class="container mx-auto navbar max-w-7xl">
 				<div class="flex-none lg:hidden">
 					<label
 						for="navigation-drawer"
