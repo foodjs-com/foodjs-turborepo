@@ -41,9 +41,6 @@ importers:
       svelte-check:
         specifier: ^3.6.0
         version: 3.6.4(postcss@8.4.35)(svelte@5.0.0-next.52)
-      tailwind-config:
-        specifier: workspace:*
-        version: link:../../packages/tailwind-config
       tailwindcss:
         specifier: ^3.4.1
         version: 3.4.1
@@ -68,8 +65,6 @@ importers:
       typescript:
         specifier: ^5.0.0
         version: 5.3.3
-
-  packages/tailwind-config: {}
 
   packages/ui:
     devDependencies:

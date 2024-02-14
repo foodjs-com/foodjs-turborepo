@@ -19,7 +19,6 @@
 		"store-class": "workspace:*",
 		"svelte": "^5.0.0-next.52",
 		"svelte-check": "^3.6.0",
-		"tailwind-config": "workspace:*",
 		"tailwindcss": "^3.4.1",
 		"tslib": "^2.4.1",
 		"typescript": "^5.0.0",
