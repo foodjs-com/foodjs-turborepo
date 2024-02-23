@@ -1,6 +1,7 @@
 <script lang="ts">
-	import ThemeSettings from "./theme/ThemeSettings.svelte";
-	import { themeSettingsStore } from "./theme/themeSettingsStore";
+	import { LINKS } from "$lib/links";
+	import ThemeSettings from "ui/c/theme/ThemeSettings.svelte";
+	import { Theme, themeSettingsStore } from "ui/c/theme/themeSettingsStore";
 </script>
 
 <div class="bg-base-300">
@@ -28,28 +29,28 @@
 			</aside>
 			<nav>
 				<h6 class="footer-title">Services</h6>
-				<a class="link link-hover">Branding</a>
-				<a class="link link-hover">Design</a>
-				<a class="link link-hover">Marketing</a>
-				<a class="link link-hover">Advertisement</a>
+				<a href={LINKS.HOME} class="link link-hover">Branding</a>
+				<a href={LINKS.HOME} class="link link-hover">Design</a>
+				<a href={LINKS.HOME} class="link link-hover">Marketing</a>
+				<a href={LINKS.HOME} class="link link-hover">Advertisement</a>
 			</nav>
 			<nav>
 				<h6 class="footer-title">Company</h6>
-				<a class="link link-hover">About us</a>
-				<a class="link link-hover">Contact</a>
-				<a class="link link-hover">Jobs</a>
-				<a class="link link-hover">Press kit</a>
+				<a href={LINKS.HOME} class="link link-hover">About us</a>
+				<a href={LINKS.HOME} class="link link-hover">Contact</a>
+				<a href={LINKS.HOME} class="link link-hover">Jobs</a>
+				<a href={LINKS.HOME} class="link link-hover">Press kit</a>
 			</nav>
 			<nav>
 				<h6 class="footer-title">Legal</h6>
-				<a class="link link-hover">Terms of use</a>
-				<a class="link link-hover">Privacy policy</a>
-				<a class="link link-hover">Cookie policy</a>
+				<a href={LINKS.HOME} class="link link-hover">Terms of use</a>
+				<a href={LINKS.HOME} class="link link-hover">Privacy policy</a>
+				<a href={LINKS.HOME} class="link link-hover">Cookie policy</a>
 			</nav>
 		</footer>
 		<ThemeSettings
 			theme={$themeSettingsStore.theme}
-			setTheme={(selectedTheme) => {
+			setTheme={(selectedTheme: Theme) => {
 				$themeSettingsStore.theme = selectedTheme;
 			}}
 		/>

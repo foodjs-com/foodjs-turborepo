@@ -1,7 +1,7 @@
 <script type="ts">
 	import "../app.css";
 	import Links from "ui/c/navbar/Links.svelte";
-	import Footer from "ui/c/Footer.svelte";
+	import Footer from "./Footer.svelte";
 	import { themeSettingsStore } from "ui/c/theme/themeSettingsStore";
 </script>
 
