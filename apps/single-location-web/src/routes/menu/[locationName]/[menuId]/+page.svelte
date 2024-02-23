@@ -2,6 +2,10 @@
 
 <script lang="ts">
 	import { browser } from "$app/environment";
+	import { LINKS } from "$lib/links";
+	import type { PageData } from "./$types";
+
+	export let data: PageData;
 
 	const categories = [
 		"Dishes",
@@ -126,6 +130,7 @@
 		</div>
 		<div class="max-w-md flex-1 pb-20">
 			<h1 class="m-1 font-bold text-3xl">menu</h1>
+			<pre>{JSON.stringify(data)}</pre>
 			{#each categories as cat}
 				<h2
 					class="m-1 text-2xl font-bold scroll-my-32 mt-5"
@@ -135,12 +140,17 @@
 					{cat}
 				</h2>
 				{#each dishes as dish}
-					<div
+					<a
+						href={LINKS.MENU_ITEM({
+							...data.params,
+							itemName: dish,
+							itemId: "1234",
+						})}
 						class="flex justify-between bg-[#F6F6F6] hover:bg-[#ececec] p-3 m-1 rounded"
 					>
 						<p>{dish}</p>
 						<p class=" italic">$7.50</p>
-					</div>
+					</a>
 				{/each}
 			{/each}
 		</div>

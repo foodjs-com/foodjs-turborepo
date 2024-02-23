@@ -7,7 +7,15 @@ declare global {
 		// interface PageData {}
 		// interface PageState {}
 		// interface Platform {}
+		interface PageState {
+			selected: {
+				item: {
+					itemId: number
+					itemName: string
+				}
+			}
+		}
 	}
 }
 
-export {};
+export { };
