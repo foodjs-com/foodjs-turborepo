@@ -4,6 +4,10 @@
 	import { browser } from "$app/environment";
 	import { LINKS } from "$lib/links";
 	import type { PageData } from "./$types";
+	import { goto, preloadData, pushState } from "$app/navigation";
+	import { page } from "$app/stores";
+	import Modal from "ui/c/Modal.svelte";
+	import Item from "./[itemName]/[itemId]/+page.svelte";
 
 	export let data: PageData;
 
@@ -86,7 +90,44 @@
 			}
 		}
 	}
+
+	let modal: HTMLDialogElement;
+
+	async function showModal(e: MouseEvent) {
+		// get URL
+		const { href } = e.currentTarget as HTMLAnchorElement;
+
+		// get result of `load` function
+		const result = await preloadData(href);
+		console.log("result");
+		console.log(result);
+
+		// create new history entry
+		if (result.type === "loaded" && result.status === 200) {
+			pushState(href, {
+				selected: {
+					item: {
+						itemName: result.data.itemName,
+						itemId: result.data.itemId,
+					},
+				},
+			});
+			modal.showModal();
+		} else {
+			goto(href);
+		}
+	}
+
+	function closeModal() {
+		history.back();
+	}
 </script>
+
+<Modal bind:modal on:close={closeModal}>
+	{#if $page.state.selected}
+		<Item data={$page.state.selected} />
+	{/if}
+</Modal>
 
 <nav
 	class="max-w-full m-auto sticky left-0 top-0 inset-x-0 mx-auto flex overflow-x-scroll px-2 py-3 bg-base-100 md:hidden"
@@ -141,6 +182,7 @@
 				</h2>
 				{#each dishes as dish}
 					<a
+						on:click|preventDefault={showModal}
 						href={LINKS.MENU_ITEM({
 							...data.params,
 							itemName: dish,

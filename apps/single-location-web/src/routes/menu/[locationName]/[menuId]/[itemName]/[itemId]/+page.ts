@@ -5,7 +5,6 @@ export const load: PageLoad = ({ params }) => {
         item: {
             itemId: params.itemId,
             itemName: params.itemName,
-        },
-        params
+        }
     };
 };

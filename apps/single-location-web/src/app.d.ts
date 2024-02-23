@@ -10,7 +10,7 @@ declare global {
 		interface PageState {
 			selected: {
 				item: {
-					itemId: number
+					itemId: string
 					itemName: string
 				}
 			}
